@@ -1,4 +1,4 @@
-/**
+﻿/**
 * Java1 homework3 task1
 * @Arkhipov Aleksandr
 * @version Jul 20, 2018
@@ -11,7 +11,7 @@ public class j1hw3v1 {
     public static void main(String[] args) {
         //Генерация компьютером числа
         Random rand = new Random ();
-        int x = rand.nextInt( 9 );
+        int x = rand.nextInt( 10 );
         //System.out.println(x);
 
         //Диалог с пользователем

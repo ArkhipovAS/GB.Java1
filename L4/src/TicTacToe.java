@@ -3,13 +3,16 @@
  * @Arkhipov Aleksandr
  * @version Jul 23, 2018
  */
+import java.time.OffsetTime;
 import java.util.Scanner;
 import java.util.Random;
 import java.util.Arrays;
 
 
 class TicTacToe {
-    final int SIZE = 5;
+    final int SIZE = 5;//playing field
+    final int FISKS = 4;//lenght WIN row
+    final int OFFSET = SIZE-FISKS;// offset SIZE
     final char DOT_X = 'x';
     final char DOT_O = 'o';
     final char DOT_EMPTY = '.';
@@ -26,7 +29,7 @@ class TicTacToe {
         printMap();
         while (true){
             humanTurn();
-            if (checkWin(DOT_X)){
+            if (checkWinNew(DOT_X)){
                 System.out.println("YOU WON!");
                 break;
             }
@@ -36,7 +39,7 @@ class TicTacToe {
             }
             aiTurn();
             printMap();
-            if (checkWin(DOT_O)){
+            if (checkWinNew(DOT_O)){
                 System.out.println("AI WON!");
                 break;
             }
@@ -81,6 +84,54 @@ class TicTacToe {
         map[y][x] = DOT_O;
     }
 
+    boolean checkWinNew (char dot){
+        //vertikal
+        boolean flag1 = true;
+        for (int k = 0; k<OFFSET; k++){
+            for (int i=0+k; i<SIZE-OFFSET; i++){
+                flag1 = true;
+                for (int j=0+k; j<SIZE-OFFSET; j++){
+                    flag1 &= (map[j][i] == dot);
+                }
+                if (flag1 == true)
+                    return true;
+            }
+        }
+        //horizontal
+        for (int k = 0; k<OFFSET; k++) {
+            for (int i = 0+k; i < SIZE-OFFSET; i++) {
+                flag1 = true;
+                for (int j = 0+k; j < SIZE-OFFSET; j++) {
+                    flag1 &= (map[i][j] == dot);
+                }
+                if (flag1 == true)
+                    return true;
+            }
+        }
+
+        //diagonal
+        for (int k = 0; k<=OFFSET; k++) {
+            for (int z=0; z<=OFFSET; z++){
+                flag1 = true;
+                for (int i = 0+k, j = SIZE-1-z; i < SIZE-OFFSET+k; i++, j--)
+                    flag1 &= (map[i][j] == dot);
+                if (flag1 == true)
+                    return true;
+            }
+        }
+
+        for (int k = 0; k<=OFFSET; k++) {
+            for (int z=0; z<=OFFSET; z++){
+                flag1 = true;
+                for (int i = 0+k, j = 0+z; i < SIZE-OFFSET+k; i++, j++)
+                    flag1 &= (map[i][j] == dot);
+                if (flag1 == true)
+                    return true;
+            }
+        }
+        return false;
+    }
+
     boolean checkWin (char dot){
         char[] templateArray1 = new  char[SIZE];//template1 array
         char[] templateArray11 = new  char[SIZE];//template11 array
@@ -94,7 +145,7 @@ class TicTacToe {
             templateArray11[0] = DOT_EMPTY;
         Arrays.fill(templateArray4, DOT_EMPTY);
         Arrays.fill(templateArray5, DOT_EMPTY);
-        
+
         for (int a = 0, d = SIZE-1; a < SIZE; a++, d--) {
             Arrays.fill(templateArray2, DOT_EMPTY);
             Arrays.fill(templateArray3, DOT_EMPTY);

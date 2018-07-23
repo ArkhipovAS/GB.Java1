@@ -39,6 +39,10 @@ class TicTacToe {
             }
             aiTurn();
             printMap();
+            if (isMapFull()){
+                System.out.println("Sorry, DRAW!");
+                break;
+            }
             if (checkWinNew(DOT_O)){
                 System.out.println("AI WON!");
                 break;

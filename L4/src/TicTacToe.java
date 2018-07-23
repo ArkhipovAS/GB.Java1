@@ -87,18 +87,21 @@ class TicTacToe {
     boolean checkWinNew (char dot){
         //vertikal
         boolean flag1 = true;
-        for (int k = 0; k<OFFSET; k++){
-            for (int i=0+k; i<SIZE-OFFSET; i++){
+        boolean flag2 = true;
+        for (int k = 0; k<=OFFSET; k++){
+            for (int i=0+k; i<SIZE-OFFSET+k; i++){
                 flag1 = true;
-                for (int j=0+k; j<SIZE-OFFSET; j++){
+                flag2 = true;
+                for (int j=0+k; j<SIZE-OFFSET+k; j++){
                     flag1 &= (map[j][i] == dot);
+                    flag2 &= (map[i][j] == dot);
                 }
-                if (flag1 == true)
+                if (flag1 == true || flag2 == true)
                     return true;
             }
         }
         //horizontal
-        for (int k = 0; k<OFFSET; k++) {
+        /*for (int k = 0; k<OFFSET; k++) {
             for (int i = 0+k; i < SIZE-OFFSET; i++) {
                 flag1 = true;
                 for (int j = 0+k; j < SIZE-OFFSET; j++) {
@@ -107,7 +110,7 @@ class TicTacToe {
                 if (flag1 == true)
                     return true;
             }
-        }
+        }*/
 
         //diagonal
         for (int k = 0; k<=OFFSET; k++) {

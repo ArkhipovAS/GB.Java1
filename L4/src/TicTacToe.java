@@ -100,35 +100,16 @@ class TicTacToe {
                     return true;
             }
         }
-        //horizontal
-        /*for (int k = 0; k<OFFSET; k++) {
-            for (int i = 0+k; i < SIZE-OFFSET; i++) {
-                flag1 = true;
-                for (int j = 0+k; j < SIZE-OFFSET; j++) {
-                    flag1 &= (map[i][j] == dot);
-                }
-                if (flag1 == true)
-                    return true;
-            }
-        }*/
-
         //diagonal
         for (int k = 0; k<=OFFSET; k++) {
             for (int z=0; z<=OFFSET; z++){
                 flag1 = true;
+                flag2 = true;
                 for (int i = 0+k, j = SIZE-1-z; i < SIZE-OFFSET+k; i++, j--)
                     flag1 &= (map[i][j] == dot);
-                if (flag1 == true)
-                    return true;
-            }
-        }
-
-        for (int k = 0; k<=OFFSET; k++) {
-            for (int z=0; z<=OFFSET; z++){
-                flag1 = true;
-                for (int i = 0+k, j = 0+z; i < SIZE-OFFSET+k; i++, j++)
-                    flag1 &= (map[i][j] == dot);
-                if (flag1 == true)
+                for (int a = 0+k, b = 0+z; a < SIZE-OFFSET+k; a++, b++)
+                    flag2 &= (map[a][b] == dot);
+                if (flag1 == true || flag2 == true)
                     return true;
             }
         }

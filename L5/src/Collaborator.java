@@ -20,7 +20,7 @@ public class Collaborator {
         this.phone = phone;
         this.salary = salary;
         this.age = age;
-        //System.out.println ( "Object data:"+"\nfullname:"+fullname+"\nposition:"+position+"\nemail:"+email+"\nphone:"+phone+"\nsalary:"+salary+"\nold:"+old ) ;
+        System.out.println ( "Object data:"+"\nfullname:"+fullname+"\nposition:"+position+"\nemail:"+email+"\nphone:"+phone+"\nsalary:"+salary+"\nage:"+age ) ;
     }
 
 }

@@ -1,7 +1,7 @@
 /**
- * Java1 homework5
+ * Java1 homework6
  * @Arkhipov Aleksandr
- * @version Jul 26, 2018
+ * @version Aug 02, 2018
  * @link https://github.com/ArkhipovAS
  */
 class Animal {
@@ -66,6 +66,9 @@ public class Lesson6 {
         dog1.run(500);
         dog2.run(500);
         dog2.jump(0.6f);
+        String s = "test";
+        s = s.toUpperCase();
+        System.out.println(s);
 
     }
 }

@@ -1,3 +1,9 @@
+/**
+ * Java1 homework5
+ * @Arkhipov Aleksandr
+ * @version Jul 26, 2018
+ * @link https://github.com/ArkhipovAS
+ */
 class Animal {
     String name;
     int distance;
